@@ -1,0 +1,27 @@
+type Order {
+  carrier: String
+  createdAt: Date
+  shippingCost: Int
+  trackingId: String
+  Address: String
+  City: String
+  lat: Float
+  lng: Float
+  trackingItems: TrackingItems
+    @materializer(query: "getTrackingItemById"arguments: [{ name: "id", field: "trackingId"}])
+
+}
+
+type OrderList {
+  name: ID
+  value: Order
+}
+
+
+type Query {
+  getOrders: [OrderList]
+    @rest(
+      endpoint: "https://deliveryapp-e78a3-default-rtdb.europe-west1.firebasedatabase.app/orders.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray"}]
+    )
+}
