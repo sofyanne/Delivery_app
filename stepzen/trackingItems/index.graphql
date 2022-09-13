@@ -7,6 +7,16 @@ type Items {
 type TrackingItems {
   customer_id: String
   items: [Items]
+  customer: Customer
+    @materializer(
+      query: "getCustomerById"
+      arguments: [{ name: "id", field: "customer_id" }]
+    )
+}
+
+type TrackingItemsList {
+  name: ID
+  value: TrackingItems
 }
 
 type Query {
@@ -14,4 +24,10 @@ type Query {
     @rest(
       endpoint: "https://deliveryapp-e78a3-default-rtdb.europe-west1.firebasedatabase.app/trackingItems/$id.json"
     )
+
+  getTrackingItems: [TrackingItemsList]
+  @rest(
+    endpoint: "https://deliveryapp-e78a3-default-rtdb.europe-west1.firebasedatabase.app/trackingItems.json"
+    transforms: [{ pathpattern: [], editor:"objectToArray"}]
+  )
 }

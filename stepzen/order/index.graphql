@@ -9,7 +9,6 @@ type Order {
   lng: Float
   trackingItems: TrackingItems
     @materializer(query: "getTrackingItemById"arguments: [{ name: "id", field: "trackingId"}])
-
 }
 
 type OrderList {
@@ -19,6 +18,11 @@ type OrderList {
 
 
 type Query {
+  getOrderById(id: ID!): Order
+  @rest(
+    endpoint: "https://deliveryapp-e78a3-default-rtdb.europe-west1.firebasedatabase.app/orders/$id.json"
+  )
+
   getOrders: [OrderList]
     @rest(
       endpoint: "https://deliveryapp-e78a3-default-rtdb.europe-west1.firebasedatabase.app/orders.json"
