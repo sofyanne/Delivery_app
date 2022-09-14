@@ -11,7 +11,8 @@ import {useQuery} from "@apollo/client";
 import {GET_CUSTOMERS} from "../graphql/queries";
 import CustomerCard from "../components/CustomerCard";
 
-export type CustomerScreenNavigationProps = CompositeNavigationProp<BottomTabNavigationProp<TabStackParamList, "Customers">,
+export type CustomerScreenNavigationProps = CompositeNavigationProp<
+    BottomTabNavigationProp<TabStackParamList, "Customers">,
     NativeStackNavigationProp<RootStackParamList>>;
 
 const CustomersScreen = () => {
