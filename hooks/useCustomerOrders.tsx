@@ -21,7 +21,7 @@ function UseCustomerOrders(userId: string) {
         }));
 
         const customerOrders = orders.filter(order => order.trackingItems.customer_id === userId);
-
+        setOrders(customerOrders);
     }, [data, userId])
 
     return { loading, error, orders};
