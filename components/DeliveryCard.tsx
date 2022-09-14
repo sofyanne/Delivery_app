@@ -22,7 +22,7 @@ const DeliveryCard = ({order}: Props) => {
             shadowRadius: 4
         },]}
     >
-        <View>
+        <View >
             <Icon name="box" type="entypo" size={50} color="white"/>
             <View>
                 <Text style={tw("text-xs text-center uppercase text-white font-bold")}>
@@ -33,7 +33,7 @@ const DeliveryCard = ({order}: Props) => {
                 </Text>
                 <Divider color="white"/>
             </View>
-            <View style={tw("mx-auto")}>
+            <View style={tw("mx-auto pb-5")}>
                 <Text style={tw("text-base text-center text-white font-bold mt-5")}>
                     Address
                 </Text>
